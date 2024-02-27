@@ -51,13 +51,17 @@ function handleFirstRequest(req, res) {
   // query ma j input leva: ? karine lai levanu
   // 1st method: route (query selector not exactly)
   var counter = req.query.counter; // jene leva mate
-  console.log(req.query.counter2);
-  console.log(req.query.counter3); // aa console ma print
+//   console.log(req.query.counter2);
+//   console.log(req.query.counter3); // aa console ma print
   var calculatedSum = calculateSum(counter);
+  var ansObj={
+    sum: calculatedSum
+  }
   // console.log(calculatedSum);
-  var answer = "the sum is " + calculatedSum;
-  res.send(answer);
+//   var answer = "the sum is " + calculatedSum;
+  res.send(ansObj);
 }
+app.get("/handleSum", handleFirstRequest);
 
 function handleFirstRequest1(req, res) {
   //2nd method to take input from user
@@ -131,6 +135,7 @@ function handleStatusCode(req, res) {
     res.status(411).send("you have send very big number");
   }
 }
+
 
 // 3 format ma res send kari shakie 1]simple text, 2] json file 3] html
 // for html type return
